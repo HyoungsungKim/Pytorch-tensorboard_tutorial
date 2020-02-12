@@ -1,18 +1,18 @@
 # Pytorch-tensorboard tutorial for a beginner
 
-- [Install](##Install)
+- [Install](##install)
 - [Hands-on](##hands-on)
-  1. [Add scalar and scalars](###1.-add-scalar-and-scalars)
-  2. [Add image and images](##2.-add-image-and-images)
-  3. [Add histogram](##3.-add-histogram)
+  1. [Add scalar and scalars](###add-scalar-and-scalars)
+  2. [Add image and images](##add-image-and-images)
+  3. [Add histogram](##add-histogram)
 
 -----
 
 ## Install
 
-For the first time, Tensorboard was made for tensorflow. However thanks to [awesome library](https://github.com/lanpa/tensorboardX), we can use it as tensorboardX in Pytorch too. 
+For the first time, Tensorboard was made for tensorflow. However thanks to [awesome library](https://github.com/lanpa/tensorboardX), we can use it as tensorboardX in Pytorch. 
 
-You can simply install tensorboardX using pip or [github](https://github.com/lanpa/tensorboardX)
+You can simply install tensorboardX using pip or [github](https://github.com/lanpa/tensorboardX) clone
 
 ```
 pip install tensorboardX
@@ -26,18 +26,20 @@ pip install 'git+https://github.com/lanpa/tensorboardX'
 
 ### Requirement
 
-As i mentioned, tensorboard tensorflow library. Therefore to run the tensorboard in web, we need `tensorflow`.
+As i mentioned, tensorboard is tensorflow library. Therefore to run the tensorboard in web, we need `tensorflow`.
 
 ## Hands-on
 
 You can see full source code and data for tensorboard in my [github](https://github.com/HyoungsungKim/Pytorch-tensorboard_tutorial)
 
-### 1. Add scalar and scalars
+### Add scalar and scalars
+
+[source](https://github.com/HyoungsungKim/Pytorch-tensorboard_tutorial/blob/master/tensorboard_scalar.py)
 
 In this chapter, we will see how to save scalar(s) and how it will be plotted in tensorboard. ***You have to pay attention a difference of scalar and scalars.***
 
 - scalar : It will plot just one graph
-- scalars : It will plot multi graph at once
+- scalars : It will plot multi graphs at once
 
 ```python
 import math
@@ -51,8 +53,8 @@ from tensorboarx import SummaryWriter
 writer = SummaryWriter(logdir='scalar/tutorial')
 ```
 
-- `writer`  is the key of this tutorial.
-- `logdir='scalar/tutorial'` is a directory that data will be saved. 
+- `writer`  is a key of this tutorial.
+- `logdir='scalar/tutorial'` is a directory that data for tensorboard will be saved. 
 
 ```python
 for step in range(-360, 360):
@@ -65,12 +67,12 @@ writer.close()
 
 There are two types of `writer.add_*`. one is just `scalar` and the other is `scalars`.
 
-- As i mentioned, scalar just draw one graph and scalar will draw multi graph
+- As i mentioned, scalar just draws one graph and scalars draws multi graphs
 
-Now let's see more detail
+Now let's see more details
 
 - `writer.add_scalar(tag, function, iteration)`
-  - Return of function is added in tensorboard and it is used as Y axis.
+  - Return of `function` is added in tensorboard and it is used as Y axis.
   - Iteration is used as X axis.
 - `writer.add_scalars(tag, function_dict, iteration)`
   - Difference is that there is a dictionary of functions. 
@@ -84,11 +86,11 @@ Now let's see a result. You can run tensorboard in terminal with command
 $ tensorboard --logdir scalar --port=6006
 ```
 
-- When we defined `writer` , we set the logdir as 'scalar' so that is why we attach `scalar` to command
-  - If you set initialize writer with empty SummaryWriter
+- When we defined `writer` , we set the logdir as 'scalar'  that is why we attach `scalar` to command
+  - If you initialize writer with empty SummaryWriter
     - `writer = SummaryWriter()`
     - Default logdir is `runs`
-- And we will use web to monitor so we need to set port number.
+- And we will use web(chrome or firefox) to monitor so we need to set a port number.
   - Default tensorboard port number is 6006.
   - If you want to use other port, then just change the number of port
     - like this `tensorboard --logdir scalar --port=6008`
@@ -100,17 +102,19 @@ $ tensorboard --logdir scalar --port=6006
 writer.add_scalar('sin', math.sin(angle_rad), step)
 writer.add_scalar('cos', math.cos(angle_rad), step)
 ```
-- These were drawn sin and cos graph
+- These drew sin and cos graph
 
 ```python
 writer.add_scalars('sin and cos', {'sin': math.sin(angle_rad), 'cos': math.cos(angle_rad)}, step)
 ```
 
-- It was drawn `sin_and_cos` graph
+- It drew `sin_and_cos` graph
 
-### 2. Add image and images
+### Add image and images
 
-It is same with scalar and scalars. image is single image and images is group of images.
+[source](https://github.com/HyoungsungKim/Pytorch-tensorboard_tutorial/blob/master/tensorboard_image.py)
+
+It is same with scalar and scalars. `image` shows single image and `images` shows group of images.
 
 We will use MNIST for tutorial. You can download MNIST data set easily using `torchvision`
 
@@ -151,11 +155,12 @@ for count, (image, tag) in enumerate(image_loader):
 ```
 
 - First `for` statement is `add_image`
-- Second `for` statement is `add_image`
+- Second `for` statement is `add_images`
 - We will add 4 images to tensorboard
 - The only difference is `add_image` use `image[0]` and `add_images` use just image
-  - Because `add_image` gets [channel, y, x] image as input and
-  - `add_images` gets [number, channel, y, x] image get as input
+  - Because `add_image` gets [channel, y, x] as input and
+  - `add_images` gets [number, channel, y, x] as input
+    - number is used for grouping
   - That is why `add_image` add just one image and `add_images` add group of images
 - And we added `str(tag)` at the first for statement.
   - If you don't use it, image will be overwritten by next image. as a result you can see only a last image in tensorboard.
@@ -164,7 +169,7 @@ for count, (image, tag) in enumerate(image_loader):
 
 ![tensorboard-images](./img/images.png)
 
-- If you deactivate `Show actual image size` which is placed on top of right, you can see larger image.
+- If you deactivate `Show actual image size` which is placed on top of left, you can see larger image.
 
 ```python
 for count, (image, tag) in enumerate(image_loader):
@@ -172,7 +177,7 @@ for count, (image, tag) in enumerate(image_loader):
 ```
 
 - This for statement added `MNIST_Tag_is_tensor_#`
-- \#  means tag
+- \#  means tag of MNIST
 
 ```python
 for count, (image, tag) in enumerate(image_loader):
@@ -180,10 +185,12 @@ for count, (image, tag) in enumerate(image_loader):
 ```
 
 - This for statement added `MNIST_group`
-- There is the yellow color side wheel
+- There is the orange color side wheel
   - When you scroll it, you can see other images.
 
-### 3. Add histogram
+### Add histogram
+
+[source](https://github.com/HyoungsungKim/Pytorch-tensorboard_tutorial/blob/master/tensorboard_histogram.py)
 
 To understand histogram, these posts are very helpful
 
@@ -192,7 +199,7 @@ To understand histogram, these posts are very helpful
 
 In this chapter, we will draw normal distribution using numpy and pytorch
 
-- We will observe 5 steps and will change sigma every step
+- We will observe 5 steps and will increase sigma every step
 
 ```python
     sigma = 1
