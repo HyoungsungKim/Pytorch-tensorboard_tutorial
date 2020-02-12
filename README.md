@@ -3,8 +3,8 @@
 - [Install](##install)
 - [Hands-on](##hands-on)
   1. [Add scalar and scalars](###add-scalar-and-scalars)
-  2. [Add image and images](##add-image-and-images)
-  3. [Add histogram](##add-histogram)
+  2. [Add image and images](###add-image-and-images)
+  3. [Add histogram](###add-histogram)
 
 -----
 
