@@ -36,7 +36,7 @@ You can see full source code and data for tensorboard in my [github](https://git
 
 [source](https://github.com/HyoungsungKim/Pytorch-tensorboard_tutorial/blob/master/tensorboard_scalar.py)
 
-In this chapter, we will see how to save scalar(s) and how it will be plotted in tensorboard. ***You have to pay attention a difference of scalar and scalars.***
+In this chapter, we will see how to save scalar(s) and how it will be plotted in tensorboard. ***You have to pay attention a difference between scalar and scalars.***
 
 - scalar : It will plot just one graph
 - scalars : It will plot multi graphs at once
