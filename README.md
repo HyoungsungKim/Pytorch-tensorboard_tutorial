@@ -43,7 +43,7 @@ In this chapter, we will see how to save scalar(s) and how it will be plotted in
 
 ```python
 import math
-from tensorboarx import SummaryWriter
+from tensorboardX import SummaryWriter
 ```
 
 - We will draw `sin` and `cos` graph using `math` module
