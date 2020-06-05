@@ -220,7 +220,7 @@ Not difficult. Let's see a result.
 
 ![tensorboard-histogram](./img/histogram.png)
 
-- You can see 1, 2, 3, 4 at the left side of histogram
+- You can see 1, 2, 3, 4 at the right side of histogram
   - It means step.
   - We increased sigma every step.
   - Because of increasing sigma, we can see distribution becomes wide
