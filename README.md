@@ -1,5 +1,7 @@
 # Pytorch-tensorboard tutorial for a beginner
 
+***Please check directory structure before start! It might be helpful to follow this story***
+
 - [Install](##install)
 - [Hands-on](##hands-on)
   1. [Add scalar and scalars](#add-scalar-and-scalars)
