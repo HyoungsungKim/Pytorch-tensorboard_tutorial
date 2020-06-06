@@ -1,4 +1,5 @@
 # Pytorch-tensorboard tutorial for a beginner
+(You can see this text in [medium](https://medium.com/@rktkek456/pytorch-tensorboard-tutorial-for-a-beginner-b037ee66574a) too.)
 
 ***Please check directory structure before start! It might be helpful to follow this story***
 
