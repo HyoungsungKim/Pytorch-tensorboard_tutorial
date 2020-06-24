@@ -187,7 +187,7 @@ for count, (image, tag) in enumerate(image_loader):
 	writer.add_images('MNIST group', image)
 ```
 
-With specific epoch (Thank you [ParikaGoel](https://github.com/HyoungsungKim/Pytorch-tensorboard_tutorial/issues/2) )
+>With specific epoch (Thank you [ParikaGoel](https://github.com/HyoungsungKim/Pytorch-tensorboard_tutorial/issues/2) )
 >
 >```python
 >for count, (image, tag) in enumerate(image_loader):
