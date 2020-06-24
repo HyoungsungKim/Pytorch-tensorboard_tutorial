@@ -187,6 +187,11 @@ for count, (image, tag) in enumerate(image_loader):
 	writer.add_images('MNIST group', image)
 ```
 
+With specific epoch (Thank you [ParikaGoel](https://github.com/HyoungsungKim/Pytorch-tensorboard_tutorial/issues/2)
+```python
+for count, (image, tag) in enumerate(image_loader):
+        writer.add_images('MNIST group', image, epoch_num)
+```
 - This for statement added `MNIST_group`
 - There is the orange color side wheel
   - When you scroll it, you can see other images.
