@@ -89,6 +89,14 @@ Now let's see a result. You can run tensorboard in terminal with command
 $ tensorboard --logdir scalar --port=6006
 ```
 
+Public ip(For remote monitor)
+
+```
+$ tensorboard --logdir scalar --host 0.0.0.0 --port=6006
+```
+
+Replace `0.0.0.0` to your ip address
+
 - When we defined `writer` , we set the logdir as 'scalar'  that is why we attach `scalar` to command
   - If you initialize writer with empty SummaryWriter
     - `writer = SummaryWriter()`
