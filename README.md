@@ -83,6 +83,18 @@ Now let's see more details
 
 #### Result
 
+In Colab, you have to use tensorboard extension 
+
+```
+%load_ext tensorboard
+%tensorboard --logdir /content/scalar
+```
+
+You can see a example in [here](https://colab.research.google.com/drive/1iQRdlJYFd4yjzZ7LkDbJCguStcpLRq3k?usp=sharing)
+
+- You have to use **Chrome browser**. It did not work when i tested it in Firefox.
+- Thank you for making issue [Michael](https://github.com/HyoungsungKim/Pytorch-tensorboard_tutorial/issues/3)!
+
 Now let's see a result. You can run tensorboard in terminal with command
 
 ```
